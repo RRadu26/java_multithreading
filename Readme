@@ -1,0 +1,12 @@
+hm - the main class: here the level 1 threads are started and joined, the input and output files and the 
+BufferedReader that reads from the orders file are opened.
+
+ordersThread - a class that implements the Runnable interface, representing a level 1 thread. 
+It reads a line from the orders file, if there are any left to read. If the number of products in the order
+is different than 0, a level 2 thread is started. At the end, it writes the "shipped" status of the order 
+in the orders_out file. The thread stops when there are no new lines (orders) left to read.
+
+productThread - a class that implements the level 2 thread. It reads line by line from the products file. 
+When it reaches a product from the order (given as a parameter), it writes "shipped" in the products_out file. 
+It stops when all the products from the order have been read (it has a counter that is incremented for each line with a product found).
+
